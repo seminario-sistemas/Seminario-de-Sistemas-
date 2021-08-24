@@ -1,7 +1,5 @@
 package edu.uspg.model;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -11,9 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -27,9 +22,6 @@ public class Registro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id_registro;
-
-	@JsonSerialize(using = ToStringSerializer.class)
-	private LocalDateTime fecha;
 	
 	@ApiModelProperty(notes = "La Jornada es M=Matutina y N=Nocturna")
 	@Column(name = "jornada", nullable = false, length = 1)
@@ -59,20 +51,16 @@ public class Registro {
 	@Column(name = "observaciones_catedratico", nullable = true, length = 500)
 	String observaciones_catedratico;
 
+	@ApiModelProperty(notes = "La observaciones_estudiante son opcionales")
+	@Column(name = "observaciones_estudiante", nullable = true, length = 500)
+	String observaciones_estudiante;
+
 	public Integer getId() {
 		return id_registro;
 	}
 
 	public void setId(Integer id_registro) {
 		this.id_registro = id_registro;
-	}
-
-	public LocalDateTime getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(LocalDateTime fecha) {
-		this.fecha = fecha;
 	}
 
 	public String getJornada() {
@@ -121,6 +109,14 @@ public class Registro {
 
 	public void setObservaciones_catedratico(String observaciones_catedratico) {
 		this.observaciones_catedratico = observaciones_catedratico;
+	}
+
+	public String getObservaciones_estudiante() {
+		return observaciones_estudiante;
+	}
+
+	public void setObservaciones_estudiante(String observaciones_estudiante) {
+		this.observaciones_estudiante = observaciones_estudiante;
 	}
 	
 }

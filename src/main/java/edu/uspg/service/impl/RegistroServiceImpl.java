@@ -35,7 +35,7 @@ public class RegistroServiceImpl implements IRegistroService {
 	public Optional<Registro> listarPorId(int id) {
 		return dao.findById(id);
 	}
-
+	
 	@Override
 	public List<Registro> listar() {
 		return dao.findAll();

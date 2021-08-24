@@ -57,6 +57,21 @@ public class RegistroController {
 		return resource;
 	}
 	
+	@GetMapping(value = "prueba/{id}", produces = MediaType.APPLICATION_JSON_VALUE )
+	public EntityModel<Registro> listarPorId2(@PathVariable("id") Integer id){ 
+		Optional<Registro> registro = service.listarPorId(id);
+		
+		if(!registro.isPresent()) {
+			//throw new ModeloNotFoundException("ID NO ENCONTRADO: " + id);
+		}
+		
+		EntityModel<Registro> resource = EntityModel.of(registro.get());
+		WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).listarPorId2(id));
+		
+		resource.add(linkTo.withRel("registro-resource")); 
+		return resource;
+	}
+	
 	@PostMapping( produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE) 
 	public ResponseEntity<Object> registrar(@RequestBody @Valid Registro reg) { 
 		Registro registro = service.registrar(reg);
