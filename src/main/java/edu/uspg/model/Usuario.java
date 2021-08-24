@@ -37,6 +37,11 @@ public class Usuario {
 	@Column(name = "clave", nullable = false, length = 45)
 	String clave;
 	
+	@ApiModelProperty(notes = "El nuermo de tener 8 digitos y un máximo de 20 digitos")
+	@Size(min = 8, max = 20, message = "El numero debe tener al menos 8 digitos")
+	@Column(name = "numero_telefono", nullable = false, length = 20)
+	String numero_telefono;
+	
 	public Integer getId() {
 		return id_usuario;
 	}
@@ -67,6 +72,15 @@ public class Usuario {
 
 	public void setClave(String clave) {
 		this.clave = clave;
+	}
+//ACA EMPEZÓ LA MODIFICACIÓN 
+	
+	public String getNumero_telefono() {
+		return numero_telefono;
+	}
+
+	public void setNumero_telefono(String numero_telefono) {
+		this.numero_telefono = numero_telefono;
 	}
 
 }
