@@ -42,12 +42,17 @@ public class Catedratico {
 	@Column(name = "jornada", nullable = false, length = 1)
 	String jornada;
 
+	/*editado en clase*/
+	
+	@ApiModelProperty(notes = "La Edad del Catedratico es:")
+	Integer edad;
+	
 	@ManyToOne
 	@JoinColumn(name="id_facultad", 
 	nullable = false, 
 	foreignKey = @ForeignKey(name = "jornadaEstudiante"))
 	Facultad facultad;
-
+	
 	public Integer getId() {
 		return id_catedratico;
 	}
@@ -95,5 +100,13 @@ public class Catedratico {
 	public void setFacultad(Facultad facultad) {
 		this.facultad = facultad;
 	}
+	public Integer getEdad() {
+		return edad;
+	}
+
+	public void setEdad(Integer edad) {
+		this.edad = edad;
+	}
+	
 	
 }

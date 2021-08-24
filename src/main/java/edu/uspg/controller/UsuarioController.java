@@ -56,6 +56,22 @@ public class UsuarioController {
 		resource.add(linkTo.withRel("usuario-resource")); 
 		return resource;
 	}
+
+	
+	@GetMapping(value = "obtener/{id}", produces = MediaType.APPLICATION_JSON_VALUE )
+	public EntityModel<Usuario> listarPorId2(@PathVariable("id") Integer id){ 
+		Optional<Usuario> usuario = service.listarPorId(id);
+		
+		if(!usuario.isPresent()) {
+			//throw new ModeloNotFoundException("ID NO ENCONTRADO: " + id);
+		}
+		
+		EntityModel<Usuario> resource = EntityModel.of(usuario.get());
+		WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).listarPorId2(id));
+		
+		resource.add(linkTo.withRel("usuario-resource")); 
+		return resource;
+	}
 	
 	@PostMapping( produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE) 
 	public ResponseEntity<Object> registrar(@RequestBody @Valid Usuario usu) { 
