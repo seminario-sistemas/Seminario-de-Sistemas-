@@ -58,6 +58,22 @@ public class CatedraticoController {
 		return resource;
 	}
 	
+	@GetMapping(value = "todos/{id}", produces = MediaType.APPLICATION_JSON_VALUE )
+	public EntityModel<Catedratico> listarPorIdT(@PathVariable("id") Integer id){ 
+		Optional<Catedratico> catedratico = service.listarPorId(id);
+		
+		if(!catedratico.isPresent()) {
+			//throw new ModeloNotFoundException("ID NO ENCONTRADO: " + id);
+		}
+		
+		EntityModel<Catedratico> resource = EntityModel.of(catedratico.get());
+		WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).listarPorIdT(id));
+		
+		resource.add(linkTo.withRel("catedratico-resource"));
+		//return service.listarPorId(id);
+		return resource;
+	}
+	
 	@PostMapping( produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE) 
 	public ResponseEntity<Object> registrar(@RequestBody @Valid Catedratico cate) { 
 		Catedratico catedratico = service.registrar(cate);
