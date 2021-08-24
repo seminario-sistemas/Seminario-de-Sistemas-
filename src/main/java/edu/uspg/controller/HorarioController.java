@@ -57,7 +57,22 @@ public class HorarioController {
 		//return service.listarPorId(id);
 		return resource;
 	}
-	
+
+	@GetMapping(value = "obtener_horario/{id}", produces = MediaType.APPLICATION_JSON_VALUE )
+	public EntityModel<Horario> listarPorIdHoraio(@PathVariable("id") Integer id){ 
+		Optional<Horario> horario = service.listarPorId(id);
+		
+		if(!horario.isPresent()) {
+			//throw new ModeloNotFoundException("ID NO ENCONTRADO: " + id);
+		}
+		
+		EntityModel<Horario> resource = EntityModel.of(horario.get());
+		WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).listarPorIdHoraio(id));
+		
+		resource.add(linkTo.withRel("horario-resource"));
+		//return service.listarPorId(id);
+		return resource;
+	}
 	@PostMapping( produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE) 
 	public ResponseEntity<Object> registrar(@RequestBody @Valid Horario hor) { 
 		Horario horario = service.registrar(hor);

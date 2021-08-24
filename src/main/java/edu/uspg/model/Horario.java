@@ -41,6 +41,18 @@ public class Horario {
 	@ApiModelProperty(notes = "La Jornada es M=Matutina y N=Nocturna")
 	@Column(name = "jornada", nullable = false, length = 1)
 	String jornada;
+	
+	@ApiModelProperty(notes = "eL Estado del horario esA=Activo e I=Inactivo")
+	@Column(name = "estado", nullable = false, length = 1)
+	String estado;
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
 	public Integer getId() {
 		return id_horario;
