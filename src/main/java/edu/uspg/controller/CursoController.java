@@ -58,6 +58,22 @@ public class CursoController {
 		return resource;
 	}
 	
+	@GetMapping(value = "obtener/{id}", produces = MediaType.APPLICATION_JSON_VALUE )
+	public EntityModel<Curso> listarPorIdO(@PathVariable("id") Integer id){ 
+		Optional<Curso> curso = service.listarPorId(id);
+		
+		if(!curso.isPresent()) {
+			//throw new ModeloNotFoundException("ID NO ENCONTRADO: " + id);
+		}
+		
+		EntityModel<Curso> resource = EntityModel.of(curso.get());
+		WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).listarPorIdO(id));
+		
+		resource.add(linkTo.withRel("curso-resource"));
+		//return service.listarPorId(id);
+		return resource;
+	}
+	
 	@PostMapping( produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE) 
 	public ResponseEntity<Object> registrar(@RequestBody @Valid Curso cur) { 
 		Curso curso = service.registrar(cur);

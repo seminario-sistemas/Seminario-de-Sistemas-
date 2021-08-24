@@ -35,6 +35,10 @@ public class Curso {
 	@Column(name = "seccion", nullable = false, length = 1)
 	String seccion;
 	
+	@ApiModelProperty(notes = "La Sala es el url de la sala de meet")
+	@Column(name = "sala", nullable = false, length = 75)
+	String sala;
+	
 	public Integer getId() {
 		return id_curso;
 	}
@@ -65,6 +69,14 @@ public class Curso {
 
 	public void setSeccion(String seccion) {
 		this.seccion = seccion;
+	}
+
+	public String getSala() {
+		return sala;
+	}
+
+	public void setSala(String sala) {
+		this.sala = sala;
 	}
 
 }
