@@ -58,6 +58,22 @@ public class CoordinadorController {
 		return resource;
 	}
 	
+	@GetMapping(value = "mostrar/{id}", produces = MediaType.APPLICATION_JSON_VALUE )
+	public EntityModel<Coordinador> listarPorIdMostrar(@PathVariable("id") Integer id){ 
+		Optional<Coordinador> coordinador = service.listarPorId(id);
+		
+		if(!coordinador.isPresent()) {
+			//throw new ModeloNotFoundException("ID NO ENCONTRADO: " + id);
+		}
+		
+		EntityModel<Coordinador> resource = EntityModel.of(coordinador.get());
+		WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).listarPorIdMostrar(id));
+		
+		resource.add(linkTo.withRel("coordinador-resource"));
+		//return service.listarPorId(id);
+		return resource;
+	}
+	
 	@PostMapping( produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE) 
 	public ResponseEntity<Object> registrar(@RequestBody @Valid Coordinador cordi) { 
 		Coordinador coordinador = service.registrar(cordi);

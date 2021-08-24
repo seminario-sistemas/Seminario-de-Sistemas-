@@ -38,6 +38,9 @@ public class Coordinador {
 	@ApiModelProperty(notes = "El dpi tiene 13 digitos")
 	@Column(name = "dpi", nullable = false, length = 13)
 	String dpi;
+	
+	@ApiModelProperty(notes = "El telefono tiene 8 digitos")
+	Integer telefono;
 
 	@ManyToOne
 	@JoinColumn(name="id_facultad", 
@@ -84,6 +87,15 @@ public class Coordinador {
 	public void setFacultad(Facultad facultad) {
 		this.facultad = facultad;
 	}
+
+	public Integer getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(Integer telefono) {
+		this.telefono = telefono;
+	}
+	
 
 
 }
