@@ -58,6 +58,22 @@ public class EstudianteController {
 		return resource;
 	}
 	
+	@GetMapping(value = "buscar/{id}", produces = MediaType.APPLICATION_JSON_VALUE )
+	public EntityModel<Estudiante> listarPorIdE(@PathVariable("id") Integer id){ 
+		Optional<Estudiante> estudiante = service.listarPorId(id);
+		
+		if(!estudiante.isPresent()) {
+			//throw new ModeloNotFoundException("ID NO ENCONTRADO: " + id);
+		}
+		
+		EntityModel<Estudiante> resource = EntityModel.of(estudiante.get());
+		WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).listarPorIdE(id));
+		
+		resource.add(linkTo.withRel("estudiante-resource"));
+		//return service.listarPorId(id);
+		return resource;
+	}
+	
 	@PostMapping( produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE) 
 	public ResponseEntity<Object> registrar(@RequestBody @Valid Estudiante estu) { 
 		Estudiante estudiante = service.registrar(estu);

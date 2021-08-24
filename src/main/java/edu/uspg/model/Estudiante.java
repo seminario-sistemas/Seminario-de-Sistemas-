@@ -43,6 +43,10 @@ public class Estudiante {
 	@Column(name = "carnet", nullable = false)
 	Integer carnet;
 	
+	@ApiModelProperty(notes = "Edad del estudiante")
+	@Column(name = "edad", nullable = false)
+	Integer edad;
+	
 	@ApiModelProperty(notes = "La Jornada es M=Matutina y N=Nocturna")
 	@Column(name = "jornada", nullable = false, length = 1)
 	String jornada;
@@ -109,5 +113,11 @@ public class Estudiante {
 		this.facultad = facultad;
 	}
 
+	public Integer getEdad() {
+		return edad;
+	}
 
+	public void setEdad(Integer edad) {
+		this.edad = edad;
+	}
 }
