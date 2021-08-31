@@ -4,6 +4,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,6 +72,17 @@ public class EstudianteController {
 		
 		resource.add(linkTo.withRel("estudiante-resource"));
 		//return service.listarPorId(id);
+		return resource;
+	}
+
+	@GetMapping(value = "buscarCarnet/{carnet}", produces = MediaType.APPLICATION_JSON_VALUE )
+	public ResponseEntity<List<Estudiante>> buscarCarnet(@PathVariable("carnet") Integer carnet){ 
+		List<Estudiante> consulta = new ArrayList<>();
+		consulta = service.buscarEstudiantePorCarnet(carnet);
+		
+		ResponseEntity<List<Estudiante>> resource = new ResponseEntity<List<Estudiante>>(consulta,HttpStatus.OK);
+		//WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).buscarCarnet(carnet));
+		//resource.add(linkTo.withRel("estudiante-resource"));
 		return resource;
 	}
 	
