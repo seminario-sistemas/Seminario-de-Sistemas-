@@ -31,10 +31,6 @@ public class AsignacionEstudianteCurso {
 	nullable = false, 
 	foreignKey = @ForeignKey(name = "asignacionCursoEstudiante"))
 	Curso curso;
-	
-	@ApiModelProperty(notes = "Mensualidad de los cursos del estudiante")
-	@Column(name = "mensualidad", nullable = true, length = 500)
-	Float mensualidad;
 
 	public Integer getId() {
 		return id_asignacion_estudiante_curso;
@@ -59,14 +55,5 @@ public class AsignacionEstudianteCurso {
 	public void setCurso(Curso curso) {
 		this.curso = curso;
 	}
-
-	public Float getMensualidad() {
-		return mensualidad;
-	}
-
-	public void setMensualidad(Float mensualidad) {
-		this.mensualidad = mensualidad;
-	}
-
 
 }

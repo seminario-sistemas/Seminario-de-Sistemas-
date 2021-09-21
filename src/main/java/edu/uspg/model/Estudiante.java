@@ -36,16 +36,12 @@ public class Estudiante {
 	String correo_personal;
 	
 	@ApiModelProperty(notes = "El dpi tiene 13 digitos")
-	@Column(name = "dpi", nullable = false, length = 13)
+	@Column(name = "dpi", nullable = false, length = 13, unique=true)
 	String dpi;
 	
 	@ApiModelProperty(notes = "El carnet tiene el formato YY-Correlativo")
-	@Column(name = "carnet", nullable = false)
+	@Column(name = "carnet", nullable = false, unique=true)
 	Integer carnet;
-	
-	@ApiModelProperty(notes = "Edad del estudiante")
-	@Column(name = "edad", nullable = false)
-	Integer edad;
 	
 	@ApiModelProperty(notes = "La Jornada es M=Matutina y N=Nocturna")
 	@Column(name = "jornada", nullable = false, length = 1)
@@ -111,13 +107,5 @@ public class Estudiante {
 
 	public void setFacultad(Facultad facultad) {
 		this.facultad = facultad;
-	}
-
-	public Integer getEdad() {
-		return edad;
-	}
-
-	public void setEdad(Integer edad) {
-		this.edad = edad;
 	}
 }

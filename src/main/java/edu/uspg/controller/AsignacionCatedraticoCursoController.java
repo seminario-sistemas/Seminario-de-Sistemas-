@@ -30,7 +30,7 @@ import edu.uspg.service.IAsignacionCatedraticoCursoService;
 
 
 @RestController
-@RequestMapping("/asign_catedratico_curso")
+@RequestMapping("/asignacion_catedratico_curso")
 public class AsignacionCatedraticoCursoController {
 
 	@Autowired

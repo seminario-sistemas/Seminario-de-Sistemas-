@@ -23,6 +23,10 @@ public class Registro {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id_registro;
 	
+	@ApiModelProperty(notes = "Fecha de ingreso")
+	@Column(columnDefinition= " timestamp not null default current_timestamp")
+	String fecha;
+	
 	@ApiModelProperty(notes = "La Jornada es M=Matutina y N=Nocturna")
 	@Column(name = "jornada", nullable = false, length = 1)
 	String jornada;
@@ -61,6 +65,15 @@ public class Registro {
 
 	public void setId(Integer id_registro) {
 		this.id_registro = id_registro;
+	}
+	
+
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
 	}
 
 	public String getJornada() {

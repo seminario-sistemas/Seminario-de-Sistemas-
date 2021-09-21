@@ -53,7 +53,6 @@ public class EstudianteServiceImpl implements IEstudianteService {
 			est.setCorreo_personal(String.valueOf(estudiante[0]));
 			est.setDpi(String.valueOf(estudiante[0]));
 			est.setCarnet(Integer.parseInt(String.valueOf(estudiante[0])));
-			est.setEdad(Integer.parseInt(String.valueOf(estudiante[0])));
 			est.setJornada(String.valueOf(estudiante[0]));
 			Facultad facultad = new Facultad();
 			facultad.setId(Integer.parseInt(String.valueOf(estudiante[0])));
