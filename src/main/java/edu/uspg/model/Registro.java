@@ -1,5 +1,9 @@
 package edu.uspg.model;
 
+
+import java.util.Date;
+
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -9,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -24,7 +30,7 @@ public class Registro {
 	Integer id_registro;
 	
 	@ApiModelProperty(notes = "Fecha de ingreso")
-	@Column(columnDefinition= " timestamp not null default current_timestamp")
+	@Column(name = "fecha",columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
 	String fecha;
 	
 	@ApiModelProperty(notes = "La Jornada es M=Matutina y N=Nocturna")
@@ -48,7 +54,7 @@ public class Registro {
 	String asistencia_estudiante;
 
 	@ApiModelProperty(notes = "La confirmación del catedratico es P=Presente, T= Tarde, J= Ausencia Justificada y I= Ausencia Injustificada")
-	@Column(name = "confirmacion_catedratico", nullable = false, length = 1)
+	@Column(name = "confirmacion_catedratico", nullable = true, length = 1)
 	String confirmacion_catedratico;
 
 	@ApiModelProperty(notes = "La observaciones_catedratico son opcionales")
