@@ -20,9 +20,9 @@ public class Facultad {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id_facultad;
 	
-	@ApiModelProperty(notes = "El nombre de la facultad debe tener como mínimo 25 caracteres")
-	@Size(min = 25, max= 45, message="El nombre de la facultad debe tener como mínimo 25 caracteres")
-	@Column(name = "nombre", nullable = false, length = 45)
+	@ApiModelProperty(notes = "El nombre de la facultad debe tener como mínimo 10 caracteres")
+	@Size(min = 10, max= 45, message="El nombre de la facultad debe tener como mínimo 10 caracteres")
+	@Column(name = "nombre", nullable = false, length = 45, unique=true)
 	String nombre;
 	
 	public Integer getId() {

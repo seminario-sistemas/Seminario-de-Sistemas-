@@ -28,7 +28,7 @@ public class Curso {
 	String nombre;
 	
 	@ApiModelProperty(notes = "Es el código de classroom")
-	@Column(name = "codigo", nullable = false)
+	@Column(name = "codigo", nullable = false, unique=true)
 	String codigo;
 	
 	@ApiModelProperty(notes = "La Sección es una letra del abecedario")

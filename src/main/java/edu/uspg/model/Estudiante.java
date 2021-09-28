@@ -32,7 +32,7 @@ public class Estudiante {
 
 	@ApiModelProperty(notes = "El correo debe tener al menos 4")
 	@Size(min = 4, max = 75, message = "nombres minimo 4 caracteres")
-	@Column(name = "correo_personal", nullable = false, length = 75)
+	@Column(name = "correo_personal", nullable = false, length = 75, unique=true)
 	String correo_personal;
 	
 	@ApiModelProperty(notes = "El dpi tiene 13 digitos")
