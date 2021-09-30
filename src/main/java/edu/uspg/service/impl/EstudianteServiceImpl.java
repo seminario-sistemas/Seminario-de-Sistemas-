@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Sort;
 
 import edu.uspg.dao.IEstudianteDAO;
 import edu.uspg.model.Estudiante;
@@ -49,13 +50,13 @@ public class EstudianteServiceImpl implements IEstudianteService {
 		dao.buscarEstudiantePorCarnet(carnet).forEach(estudiante ->{
 			Estudiante est = new Estudiante();
 			est.setId(Integer.parseInt(String.valueOf(estudiante[0])));
-			est.setNombre(String.valueOf(estudiante[0]));
-			est.setCorreo_personal(String.valueOf(estudiante[0]));
-			est.setDpi(String.valueOf(estudiante[0]));
-			est.setCarnet(Integer.parseInt(String.valueOf(estudiante[0])));
-			est.setJornada(String.valueOf(estudiante[0]));
+			est.setNombre(String.valueOf(estudiante[1]));
+			est.setCorreo_personal(String.valueOf(estudiante[2]));
+			est.setDpi(String.valueOf(estudiante[3]));
+			est.setCarnet(Integer.parseInt(String.valueOf(estudiante[4])));
+			est.setJornada(String.valueOf(estudiante[5]));
 			Facultad facultad = new Facultad();
-			facultad.setId(Integer.parseInt(String.valueOf(estudiante[0])));
+			facultad.setId(Integer.parseInt(String.valueOf(estudiante[6])));
 			est.setFacultad(facultad);
 			consulta.add(est);
 		});
