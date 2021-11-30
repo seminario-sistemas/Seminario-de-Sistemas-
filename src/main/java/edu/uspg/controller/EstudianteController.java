@@ -26,8 +26,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import edu.uspg.model.CursoEstudiante;
 //import edu.uspg.exception.ModeloNotFoundException;
 import edu.uspg.model.Estudiante;
+import edu.uspg.service.ICursoEstudianteService;
 import edu.uspg.service.IEstudianteService;
 
 
@@ -81,8 +83,6 @@ public class EstudianteController {
 		consulta = service.buscarEstudiantePorCarnet(carnet);
 		
 		ResponseEntity<List<Estudiante>> resource = new ResponseEntity<List<Estudiante>>(consulta,HttpStatus.OK);
-		//WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).buscarCarnet(carnet));
-		//resource.add(linkTo.withRel("estudiante-resource"));
 		return resource;
 	}
 	

@@ -6,9 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-//import javax.validation.constraints.Email;
-//import javax.validation.constraints.NotEmpty;
-//import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import io.swagger.annotations.ApiModel;
@@ -38,6 +35,10 @@ public class Curso {
 	@ApiModelProperty(notes = "La Sala es el url de la sala de meet")
 	@Column(name = "sala", nullable = false, length = 75)
 	String sala;
+	
+	@ApiModelProperty(notes = "Cantidad de sesiones del curso")
+	@Column(name = "sesiones", nullable = false)
+	Integer sesiones;
 	
 	public Integer getId() {
 		return id_curso;
@@ -77,6 +78,14 @@ public class Curso {
 
 	public void setSala(String sala) {
 		this.sala = sala;
+	}
+
+	public Integer getSesiones() {
+		return sesiones;
+	}
+
+	public void setSesiones(Integer sesiones) {
+		this.sesiones = sesiones;
 	}
 
 }
